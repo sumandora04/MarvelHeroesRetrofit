@@ -11,5 +11,8 @@
     </fragment>
     <fragment android:id="@+id/movieDetailFragment"
               android:name="com.notepoint4ugmail.marvelheroesretrofit.detail.MovieDetailFragment"
-              android:label="fragment_movie_detail" tools:layout="@layout/fragment_movie_detail"/>
+              android:label="fragment_movie_detail" tools:layout="@layout/fragment_movie_detail">
+        <argument android:name="selectedMovies"
+                  app:argType="com.notepoint4ugmail.marvelheroesretrofit.network.HeroesData"/>
+    </fragment>
 </navigation>

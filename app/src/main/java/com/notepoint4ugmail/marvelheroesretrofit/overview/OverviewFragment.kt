@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 
 import com.notepoint4ugmail.marvelheroesretrofit.R
 import com.notepoint4ugmail.marvelheroesretrofit.databinding.OverviewFragmentBinding
@@ -34,7 +36,17 @@ class OverviewFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        val adapter = OverviewAdapter()
+        val adapter = OverviewAdapter(OverviewAdapter.OnClickListener{
+            overviewViewModel.onNavigationToDetail(it)
+        })
+
+        overviewViewModel.navigateToDetails.observe(this, Observer {
+            it?.let {
+                this.findNavController().navigate(OverviewFragmentDirections.actionOverviewFragmentToMovieDetailFragment(it))
+                overviewViewModel.onNavigationCompletion()
+            }
+        })
+
         binding.heroesRecycler.adapter = adapter
 
         overviewViewModel.movies.observe(this, Observer {

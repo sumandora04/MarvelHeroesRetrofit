@@ -23,6 +23,7 @@
                 app:spanCount="2"
                 tools:itemCount="16"
                 tools:listitem="@layout/image_grid"
+                app:listRecyclerBind="@{viewModel.movies}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

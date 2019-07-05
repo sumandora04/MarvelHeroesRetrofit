@@ -1,7 +1,11 @@
 package com.notepoint4ugmail.marvelheroesretrofit.network
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
+
+@Parcelize
 data class HeroesData(
     val id:Int,
     @Json(name = "image") val imageUrl:String,
@@ -10,4 +14,4 @@ data class HeroesData(
     val title:String,
     val language:String
 
-)
+) : Parcelable

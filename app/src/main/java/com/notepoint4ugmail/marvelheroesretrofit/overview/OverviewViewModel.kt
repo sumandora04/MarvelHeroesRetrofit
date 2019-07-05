@@ -27,6 +27,10 @@ class OverviewViewModel : ViewModel() {
     val movies:LiveData<List<HeroesData>>
     get() = _movies
 
+    private val _navigateToDetails = MutableLiveData<HeroesData>()
+    val navigateToDetails:LiveData<HeroesData>
+    get() = _navigateToDetails
+
     private val viewModelJob = Job()
     private val scope = CoroutineScope(viewModelJob+Dispatchers.Main)
 
@@ -55,6 +59,14 @@ class OverviewViewModel : ViewModel() {
         }
     }
 
+
+    fun onNavigationToDetail(movie:HeroesData){
+        _navigateToDetails.value = movie
+    }
+
+    fun onNavigationCompletion(){
+        _navigateToDetails.value = null
+    }
 
     override fun onCleared() {
         super.onCleared()

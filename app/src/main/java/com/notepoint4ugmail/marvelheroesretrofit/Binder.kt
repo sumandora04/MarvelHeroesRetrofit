@@ -11,7 +11,7 @@ import com.notepoint4ugmail.marvelheroesretrofit.overview.OverviewAdapter
 
 
 @BindingAdapter("imageBinder")
-fun bindImage(imageView: ImageView,imageUrl:String?){
+fun bindImage(imageView: ImageView, imageUrl: String?) {
     imageUrl?.let {
         val imgUri = imageUrl.toUri().buildUpon().scheme("https").build()
 
@@ -26,7 +26,7 @@ fun bindImage(imageView: ImageView,imageUrl:String?){
 }
 
 @BindingAdapter("listRecyclerBind")
-fun bindRecyclerView(recyclerView: RecyclerView,data:List<HeroesData>?){
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<HeroesData>?) {
     val adapter = recyclerView.adapter as OverviewAdapter
     adapter.submitList(data)
 }
